@@ -1,11 +1,11 @@
 import Layout from "./components/template/Layout";
 
-export default function Home() {
+export default function Notificacoes() {
   return (
     <div>
       <Layout
-        titulo={"Pagina inical"}
-        subtitulo="Estamos construindo um template admin!"
+        titulo={"Ajuste e Configurações"}
+        subtitulo="Personalize o sistema por aqui!"
       >
         <h3>conteudo</h3>
       </Layout>
