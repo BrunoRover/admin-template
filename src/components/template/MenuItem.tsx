@@ -4,7 +4,7 @@ interface MenuItemProps {
   url?: string;
   text: string;
   icon: React.ReactNode;
-  onclick?: (e: any) => void;
+  onclick?: (e: React.MouseEvent<HTMLDivElement>) => void;
 }
 
 const MenuItem = (props: MenuItemProps) => {

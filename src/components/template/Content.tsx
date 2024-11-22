@@ -1,6 +1,6 @@
 interface ContentProps {
-  Content: string;
-  subContent: string;
+  titulo?: string;
+  subtitulo?: string;
   children?: React.ReactNode;
 }
 
