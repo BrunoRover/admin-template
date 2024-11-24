@@ -1,9 +1,12 @@
 import AuthInput from "@/components/auth/AuthInput";
 import { WarningIcon } from "@/components/icons/icons";
+import useAuth from "@/data/hooks/useAuth";
 import Image from "next/image";
 import { useState } from "react";
 
 const Authentication = () => {
+  const { user, loginGoogle } = useAuth();
+
   const [mode, setMode] = useState<"login" | "register">("login");
   const [error, setError] = useState(null);
   const [email, setEmail] = useState();
@@ -69,7 +72,7 @@ const Authentication = () => {
         </button>
         <hr className="my-6 border-gray-300 w-full" />
         <button
-          onClick={submit}
+          onClick={loginGoogle}
           className="w-full bg-red-500 hover:bg-red-400 text-white rounded-lg px-4 py-3 "
         >
           Entrar com o Google
