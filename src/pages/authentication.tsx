@@ -5,23 +5,27 @@ import Image from "next/image";
 import { useState } from "react";
 
 const Authentication = () => {
-  const { user, loginGoogle } = useAuth();
+  const { register, login, loginGoogle } = useAuth();
 
   const [mode, setMode] = useState<"login" | "register">("login");
   const [error, setError] = useState(null);
   const [email, setEmail] = useState();
-  const [senha, setSenha] = useState();
+  const [password, setSenha] = useState();
 
   function displayError(msg, time = 5) {
     setError(msg);
     setTimeout(() => setError(null), time * 1000);
   }
 
-  function submit() {
-    if (mode === "login") {
-      displayError("Ocorreu um erro no login");
-    } else {
-      displayError("Ocorreu um erro no cadastro");
+  async function submit() {
+    try {
+      if (mode === "login") {
+        await login(email, password);
+      } else {
+        await register(email, password);
+      }
+    } catch (e) {
+      displayError(e?.message ?? "Erro desconhecido");
     }
   }
   return (
@@ -60,7 +64,7 @@ const Authentication = () => {
         <AuthInput
           label="Senha"
           type="password"
-          value={senha}
+          value={password}
           new={setSenha}
           mandatory
         />
